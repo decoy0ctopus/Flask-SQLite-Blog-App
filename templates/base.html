@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- Flask - SQL - Plotly - App</title>
+    <style>
+        .post {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Flask - SQL - Plotly App</a>
+        <a href="#">About</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+    <div class="header">
+        <h2>
+            Plotly Chart Demo
+        </h2>
+    </div>
+
+    <div id="chart" class="chart">
+
+    </div>
+</body>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        
+        var graphs = {{graphJSON | safe}};
+    
+        Plotly.plot('chart',graphs,{});        
+
+    </script>
+
+</html>
